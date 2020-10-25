@@ -221,13 +221,14 @@ namespace PoorExcel
         }
         public void AddColumn(System.Windows.Forms.DataGridView dataGridView1)
         {
-            List<Cell> newColumn = new List<Cell>();
-            for (int j = 0; j < rowCount; j++)
-            {
-                newColumn.Add(new PoorExcel.Cell(j,colCount));
-                dictionary.Add(newColumn.Last().getName(), "");
-            }
-            grid.Add(newColumn);
+            List<Cell> newCol = new List<Cell>();
+
+                for (int j = 0; j < rowCount; j++)
+                {
+                    string name = FullName(j, colCount);
+                    grid[j].Add(new Cell(j, colCount));
+                    dictionary.Add(name, "");
+                }
             RefreshReferences();
             foreach (List<Cell> list in grid)
             {
