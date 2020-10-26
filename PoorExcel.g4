@@ -15,6 +15,8 @@
  | expression GREATER expression #GreaterExpr
  | expression LESS expression #LessExpr
  | NOT LPAREN expression RPAREN #NotExpr
+ | UNARYM expression #UnaryMExpr
+ | UNARYP expression #UnaryPExpr
  | NUMBER #NumberExpr
  | IDENTIFIER #IdentifierExpr
  ;
@@ -34,10 +36,14 @@
  LESS:'<';
  GREATER:'>';
  NOT:'not';
+ UNARYM:'--';
+ UNARYP:'++';
  MMAX:'mmax';
  MMIN:'mmin';
  LPAREN:'(';
  RPAREN:')';
  COMMA:',';
  WS:[\t\r\n]->channel(HIDDEN);
+
+
 
