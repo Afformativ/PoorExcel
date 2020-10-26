@@ -1,4 +1,4 @@
-﻿using Antlr4.Runtime.Misc;
+using Antlr4.Runtime.Misc;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -64,6 +64,17 @@ namespace PoorExcel
                 Debug.WriteLine("{0} / {1}", left, right);
                 return left / right;
             }
+        }
+
+        public override double VisitUnaryMExpr([NotNull] PoorExcelParser.UnaryMExprContext context)
+        {
+            var number = WalkLeft(context);
+            return number - 1;
+        }
+        public override double VisitUnaryPExpr([NotNull] PoorExcelParser.UnaryPExprContext context)
+        {
+            var number = WalkLeft(context);
+            return number + 1;
         }
         public override double VisitMmaxMminExpr([NotNull] PoorExcelParser.MmaxMminExprContext context)
         {
@@ -147,3 +158,4 @@ namespace PoorExcel
     
    
 }
+
